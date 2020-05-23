@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1590211319646
+Bundle-Activator: com.phodal.asogi.HelloWorldActivator
+Bundle-ManifestVersion: 2
+Bundle-Name: HelloWorld
+Bundle-SymbolicName: HelloWorld
+Bundle-Version: 0.0.1
+Created-By: 1.8.0_202-ea (Oracle Corporation)
+Export-Package: com.phodal.asogi;uses:="org.osgi.framework";version="0
+ .0.1"
+Import-Package: org.osgi.framework
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-5.0.0.202001221519
+
