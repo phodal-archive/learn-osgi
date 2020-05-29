@@ -24,3 +24,7 @@ hs_err_pid*
 local-maven-repo/*
 **/target
 *.iml
+felix-framework
+**/cache.lock
+felix-cache/
+**/bundle*/
