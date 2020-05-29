@@ -1,0 +1,81 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.vaadin.example.osgi</groupId>
+    <artifactId>felix-tutorial-mavenized</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <url>http://felix.apache.org/documentation/tutorials-examples-and-presentations/apache-felix-osgi-tutorial.html</url>
+    <distributionManagement>
+        <repository>
+          <id>local-maven-repo</id>
+          <url>file:///${project.basedir}/../local-maven-repo</url>
+        </repository>
+    </distributionManagement>
+    
+    <modules>
+        <module>apache-felix-tutorial-example-1</module>
+        <module>apache-felix-tutorial-example-2</module>
+        <module>apache-felix-tutorial-example-2b</module>
+        <module>apache-felix-tutorial-example-3</module>
+        <module>apache-felix-tutorial-example-4</module>
+        <module>apache-felix-tutorial-example-5</module>
+        <module>apache-felix-tutorial-example-6</module>
+        <module>apache-felix-tutorial-example-7</module>
+        <module>apache-felix-tutorial-example-8</module>
+        <module>apache-felix-tutorial-example-9</module>
+    </modules>
+
+    <properties>
+    	<osgi.bundle.version>${project.version}</osgi.bundle.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>biz.aQute.bnd</groupId>
+                <artifactId>bnd-maven-plugin</artifactId>
+                <version>4.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>bnd-process</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Make JAR plugin play nicely with BND plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>local-maven-repo</id>
+            <url>file:///${project.basedir}/../local-maven-repo</url>
+        </repository>
+    </repositories>
+
+</project>
